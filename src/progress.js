@@ -1,11 +1,22 @@
-function generateProgressBar(percentage, size = 20) {
+function generateProgressBar(percentage, size) {
+    if (size === undefined) {
+        size = 20;
+    }
+
     const filledLength = Math.round((percentage / 100) * size);
     const emptyLength = size - filledLength;
     
-    const filled = '█'.repeat(filledLength); // Заполненная часть
-    const empty = '░'.repeat(emptyLength);   // Пустая часть
+    let filled = '';
+    for (let i = 0; i < filledLength; i++) {
+        filled += '█';
+    }
     
-    return `[${filled}${empty}] ${percentage}%`;
+    let empty = '';
+    for (let j = 0; j < emptyLength; j++) {
+        empty += '░';
+    }
+    
+    return '[' + filled + empty + '] ' + percentage + '%';
 }
 
 module.exports = { generateProgressBar };

@@ -1,30 +1,28 @@
-const readline = require('readline');
+const readlineSync = require('readline-sync');
 const storage = require('./storage');
-const { generateProgressBar } = require('./progress');
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+const progressModule = require('./progress');
 
 function showSubjects() {
     const subjects = storage.readData();
+    
     console.clear();
     console.log('=== ТРЕКЕР ИЗУЧЕНИЯ ДИСЦИПЛИН ===\n');
     
     if (subjects.length === 0) {
         console.log('Список дисциплин пуст.');
     } else {
-        subjects.forEach((sub, index) => {
-            const bar = generateProgressBar(sub.progress);
-            console.log(`${index + 1}. ${sub.name.padEnd(20)} ${bar}`);
-        });
+        for (let i = 0; i < subjects.length; i++) {
+            const sub = subjects[i];
+            const bar = progressModule.generateProgressBar(sub.progress);
+            
+            console.log((i + 1) + '. ' + sub.name + '\t' + bar);
+        }
     }
     console.log('\n================================');
 }
 
 function askQuestion(query) {
-    return new Promise(resolve => rl.question(query, resolve));
+    return readlineSync.question(query);
 }
 
-module.exports = { showSubjects, askQuestion, rl };
+module.exports = { showSubjects, askQuestion };

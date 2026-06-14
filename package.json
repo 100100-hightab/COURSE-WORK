@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "node src/index.js"
-},
-
+    "start": "node src/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/100100-hightab/COURSE-WORK.git"
@@ -18,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/100100-hightab/COURSE-WORK/issues"
   },
-  "homepage": "https://github.com/100100-hightab/COURSE-WORK#readme"
+  "homepage": "https://github.com/100100-hightab/COURSE-WORK#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
