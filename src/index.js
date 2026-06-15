@@ -1,6 +1,5 @@
 console.log('Study tracker is successfully started!');
 
-// Подключаем наши модули
 const ui = require('./ui');
 const menu = require('./menu');
 
@@ -39,5 +38,4 @@ function main() {
     }
 }
 
-// Запускаем программу
 main();
